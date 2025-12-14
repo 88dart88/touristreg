@@ -1,0 +1,218 @@
+/* --- MODERN LANDING PAGE STYLES --- */
+
+/* 1. Background Image Setup */
+body.landing-page {
+  /* High Quality Tropical Background */
+  background: url("../logo/bgtour.jpeg") no-repeat center center fixed;
+  background-size: cover;
+  font-family: "Inter", sans-serif;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* No scrollbars for the main view */
+  position: relative;
+}
+
+/* Dark overlay to make text readable */
+body.landing-page::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(0, 30, 10, 0.7), rgba(0, 0, 0, 0.4));
+  z-index: 1;
+}
+
+/* 2. Glass Header */
+.glass-header {
+  position: relative;
+  z-index: 10;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.user-avatar img {
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.logo-text {
+  font-size: 20px;
+  font-weight: 700;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  letter-spacing: 0.5px;
+}
+
+/* 3. Hero Content */
+.hero-container {
+  flex: 1;
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.hero-content {
+  text-align: center;
+  max-width: 800px;
+  color: white;
+}
+
+.welcome-badge {
+  background: rgba(46, 204, 113, 0.2);
+  color: #81efac;
+  border: 1px solid rgba(46, 204, 113, 0.4);
+  padding: 8px 16px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  display: inline-block;
+  margin-bottom: 20px;
+  backdrop-filter: blur(4px);
+}
+
+.hero-content h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin: 0 0 20px 0;
+  line-height: 1.1;
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 50px;
+  line-height: 1.6;
+}
+
+/* 4. Glass Cards (The Buttons) */
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 25px;
+  width: 280px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-5px);
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.card-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.status-card .card-icon {
+  background: rgba(59, 130, 246, 0.2);
+  color: #60a5fa;
+}
+.register-card .card-icon {
+  background: rgba(16, 185, 129, 0.2);
+  color: #34d399;
+}
+
+.card-text {
+  flex: 1;
+  text-align: left;
+}
+
+.card-text h3 {
+  margin: 0;
+  font-size: 18px;
+  color: white;
+  font-weight: 700;
+}
+
+.card-text span {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.card-arrow {
+  color: rgba(255, 255, 255, 0.5);
+  transition: transform 0.3s;
+}
+
+.glass-card:hover .card-arrow {
+  transform: translateX(5px);
+  color: white;
+}
+
+/* 5. Footer */
+footer {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.6);
+  padding: 20px;
+  font-size: 13px;
+  background: transparent;
+  box-shadow: none;
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+  .glass-card {
+    width: 100%;
+    max-width: 340px;
+  }
+  body.landing-page {
+    overflow-y: auto;
+    height: auto;
+  }
+}

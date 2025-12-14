@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tourist Registration Form</title>
+    <link rel="stylesheet" href="../css/registration.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="header-content">
+        <div class="logo">Tourist Registration System</div>
+        <div class="user-info">
+          <div class="user-avatar">
+            <a href="../index.html"><img src="../logo/tourismlogo.png" alt="User Avatar" width="65" /></a>
+          </div>
+          <div></div>
+        </div>
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="welcome-panel">
+        <h1>Tourist Registration Form</h1>
+        <p>Please complete all required fields to submit your registration.</p>
+
+        <form id="registration-form" class="registration-form">
+          <div class="form-section">
+            <h2>Registration Type</h2>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="registrationType">Select Registration Type <span class="required">*</span></label>
+                <select id="registrationType" name="registrationType" required>
+                  <option value="">Select Type</option>
+                  <option value="new">Local Tourist</option>
+                  <option value="foreign">Foreign/International Tourist</option>
+                  <option value="returning">Returning Resident</option>
+                  <option value="business">Business/Corporate Tourist</option>
+                  <option value="vip">VIP/Special Permit Tourist</option>
+                </select>
+              </div>
+
+              <div class="form-group foreign-field" style="display: none">
+                <label for="Nationality">Nationality <span class="required">*</span></label>
+                <select id="Nationality" name="Nationality">
+                  <option value="">Select Nationality</option>
+                  <option value="American">American</option>
+                  <option value="Australian">Australian</option>
+                  <option value="British">British</option>
+                  <option value="Canadian">Canadian</option>
+                  <option value="Chinese">Chinese</option>
+                  <option value="Filipino">Filipino</option>
+                  <option value="French">French</option>
+                  <option value="German">German</option>
+                  <option value="Indian">Indian</option>
+                  <option value="Indonesian">Indonesian</option>
+                  <option value="Italian">Italian</option>
+                  <option value="Japanese">Japanese</option>
+                  <option value="Korean">Korean</option>
+                  <option value="Malaysian">Malaysian</option>
+                  <option value="Russian">Russian</option>
+                  <option value="Singaporean">Singaporean</option>
+                  <option value="Spanish">Spanish</option>
+                  <option value="Thai">Thai</option>
+                  <option value="Vietnamese">Vietnamese</option>
+                  <option value="Other">Other</option>
+                </select>
+
+                <input
+                  type="text"
+                  id="otherNationality"
+                  name="otherNationality"
+                  placeholder="Please specify"
+                  style="display: none; margin-top: 8px"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h2>Personal Information</h2>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="lastName">Last Name <span class="required">*</span></label>
+                <input type="text" id="lastName" name="lastName" required />
+              </div>
+              <div class="form-group">
+                <label for="firstName">First Name <span class="required">*</span></label>
+                <input type="text" id="firstName" name="firstName" required />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="middleName">Middle Name</label>
+                <input type="text" id="middleName" name="middleName" />
+              </div>
+              <div class="form-group">
+                <label for="extensionName">Extension Name</label>
+                <select id="extensionName" name="extensionName">
+                  <option value="">None</option>
+                  <option value="Jr.">Jr.</option>
+                  <option value="Sr.">Sr.</option>
+                  <option value="I">I</option>
+                  <option value="II">II</option>
+                  <option value="III">III</option>
+                  <option value="IV">IV</option>
+                  <option value="V">V</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group checkbox-group">
+                <label>Passport Availability <span class="required">*</span></label>
+                <div class="radio-options">
+                  <div class="radio-option">
+                    <input type="radio" id="withPassport" name="passportStatus" value="with" required />
+                    <label for="withPassport">With Passport</label>
+                  </div>
+                  <div class="radio-option">
+                    <input type="radio" id="noPassport" name="passportStatus" value="none" required />
+                    <label for="noPassport">No Passport</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-row lrn-field" style="display: none">
+              <div class="form-group">
+                <label for="passportNum">Passport Number <span class="required">*</span></label>
+                <input
+                  type="text"
+                  id="passportNum"
+                  name="passportNum"
+                  pattern="[A-Za-z0-9]{6,12}"
+                  maxlength="12"
+                />
+                <div class="field-help">Usually 6–12 characters</div>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="dob">Date of Birth <span class="required">*</span></label>
+                <input type="date" id="dob" name="dob" required />
+              </div>
+              <div class="form-group">
+                <label for="placeOfBirth">Place of Birth <span class="required">*</span></label>
+                <input type="text" id="placeOfBirth" name="placeOfBirth" required />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="gender">Gender <span class="required">*</span></label>
+                <select id="gender" name="gender" required>
+                  <option value="">Select</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                  <option value="other">Other</option>
+                  <option value="prefer-not">Prefer not to say</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="religion">Religion <span class="required">*</span></label>
+                <select id="religion" name="religion" required>
+                  <option value="">Select Religion</option>
+                  <option value="Roman Catholic">Roman Catholic</option>
+                  <option value="Iglesia ni Cristo">Iglesia ni Cristo</option>
+                  <option value="Jehovas Witness">Jehovas Witness</option>
+                  <option value="Baptist">Baptist</option>
+                  <option value="Seventh Day Adventist">Seventh Day Adventist</option>
+                  <option value="Mormon">Mormon (Latter-day Saints)</option>
+                  <option value="Muslim">Muslim</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row other-religion-field" style="display: none">
+              <div class="form-group">
+                <label for="otherReligion">Please Specify Religion <span class="required">*</span></label>
+                <input type="text" id="otherReligion" name="otherReligion" />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group checkbox-group">
+                <label>Belonging to an Indigenous Group? <span class="required">*</span></label>
+                <div class="radio-options">
+                  <div class="radio-option">
+                    <input type="radio" id="indigenousYes" name="indigenous" value="yes" required />
+                    <label for="indigenousYes">Yes</label>
+                  </div>
+                  <div class="radio-option">
+                    <input type="radio" id="indigenousNo" name="indigenous" value="no" required />
+                    <label for="indigenousNo">No</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-row indigenous-field" style="display: none">
+              <div class="form-group">
+                <label for="indigenousGroup">Indigenous Group <span class="required">*</span></label>
+                <select id="indigenousGroup" name="indigenousGroup">
+                  <option value="">Select Indigenous Group</option>
+                  <option value="Igorot">Igorot</option>
+                  <option value="Lumad">Lumad</option>
+                  <option value="Aeta">Aeta</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row other-indigenous-field" style="display: none">
+              <div class="form-group">
+                <label for="otherIndigenousGroup"
+                  >Please Specify Indigenous Group <span class="required">*</span></label
+                >
+                <input type="text" id="otherIndigenousGroup" name="otherIndigenousGroup" />
+              </div>
+            </div>
+
+            <div class="form-section">
+              <h3>Current Address</h3>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="streetAddress">Street Address <span class="required">*</span></label>
+                  <input type="text" id="streetAddress" name="streetAddress" required />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="barangay">Barangay/District <span class="required">*</span></label>
+                  <input type="text" id="barangay" name="barangay" required />
+                </div>
+                <div class="form-group">
+                  <label for="city">City/Municipality <span class="required">*</span></label>
+                  <input type="text" id="city" name="city" required />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="province">Province <span class="required">*</span></label>
+                  <input type="text" id="province" name="province" required />
+                </div>
+                <div class="form-group">
+                  <label for="zipCode">Zip Code <span class="required">*</span></label>
+                  <input type="text" id="zipCode" name="zipCode" pattern="[0-9]{4,5}" required />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h2>Emergency Contact Information</h2>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="emergencyLastName">Last Name <span class="required">*</span></label>
+                <input type="text" id="emergencyLastName" name="emergencyLastName" required />
+              </div>
+              <div class="form-group">
+                <label for="emergencyFirstName">First Name <span class="required">*</span></label>
+                <input type="text" id="emergencyFirstName" name="emergencyFirstName" required />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="emergencyMiddleName">Middle Name</label>
+                <input type="text" id="emergencyMiddleName" name="emergencyMiddleName" />
+              </div>
+              <div class="form-group">
+                <label for="emergencyRelationship">Relationship <span class="required">*</span></label>
+                <select id="emergencyRelationship" name="emergencyRelationship" required>
+                  <option value="">Select Relationship</option>
+                  <option value="Mother">Mother</option>
+                  <option value="Father">Father</option>
+                  <option value="Spouse">Spouse</option>
+                  <option value="Sibling">Sibling</option>
+                  <option value="Friend">Friend</option>
+                  <option value="Relative">Relative</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row other-relationship-field" style="display: none">
+              <div class="form-group">
+                <label for="otherRelationship"
+                  >Please Specify Relationship <span class="required">*</span></label
+                >
+                <input type="text" id="otherRelationship" name="otherRelationship" />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="emergencyContact">Contact Number <span class="required">*</span></label>
+                <input
+                  type="tel"
+                  id="emergencyContact"
+                  name="emergencyContact"
+                  placeholder="09XX XXX XXXX"
+                  required
+                />
+                <div class="field-help">e.g., 0912 345 6789</div>
+              </div>
+              <div class="form-group">
+                <label for="emergencyEmail">Email Address</label>
+                <input
+                  type="email"
+                  id="emergencyEmail"
+                  name="emergencyEmail"
+                  placeholder="example@domain.com"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h2>Travel Information</h2>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="purpose">Purpose of Travel <span class="required">*</span></label>
+                <select id="purpose" name="purpose" required>
+                  <option value="">Select Purpose</option>
+                  <option value="tourism">Leisure / Vacation</option>
+                  <option value="business">Business Trip</option>
+                  <option value="family">Visit Family</option>
+                  <option value="event">Attend Event</option>
+                  <option value="research">Research / Study</option>
+                </select>
+              </div>
+
+              <div class="form-group travel-package-field" style="display: none">
+                <label for="trackPackage">Travel Package / Type <span class="required">*</span></label>
+                <select id="trackPackage" name="trackPackage">
+                  <option value="">Select Travel Type</option>
+                  <option value="guided">Guided Tour Package</option>
+                  <option value="independent">Independent Travel</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h2>Travel Documents</h2>
+            <p class="form-hint" style="margin-bottom: 15px">
+              Please upload clear copies of the required documents. Max file size: 5MB per file.
+            </p>
+
+            <div class="form-row doc-group" id="group-birthCert">
+              <div class="form-group full-width">
+                <label for="birthCertificate">Birth Certificate (Optional)</label>
+                <input
+                  type="file"
+                  id="birthCertificate"
+                  name="birthCertificate"
+                  accept=".pdf,.jpg,.jpeg,.png"
+                />
+              </div>
+            </div>
+
+            <div class="form-row doc-group" id="group-valid-id" style="display: none">
+              <div class="form-group full-width">
+                <label for="validID"
+                  >Valid ID (e.g., National ID, Driver’s License) <span class="required">*</span></label
+                >
+                <input type="file" id="validID" name="validID" accept=".pdf,.jpg,.jpeg,.png" />
+              </div>
+            </div>
+
+            <div class="form-row doc-group" id="group-passport" style="display: none">
+              <div class="form-group full-width">
+                <label for="passportScan">Passport Scan <span class="required">*</span></label>
+                <input type="file" id="passportScan" name="passportScan" accept=".pdf,.jpg,.jpeg,.png" />
+              </div>
+            </div>
+
+            <div class="form-row doc-group" id="group-itinerary" style="display: none">
+              <div class="form-group full-width">
+                <label for="itinerary">Travel Itinerary</label>
+                <input type="file" id="itinerary" name="itinerary" accept=".pdf,.doc,.docx,.jpg" />
+                <div class="field-help">Required for Foreign & Returning. Optional for Local.</div>
+              </div>
+            </div>
+
+            <div class="form-row doc-group" id="group-hotel" style="display: none">
+              <div class="form-group full-width">
+                <label for="hotelProof">Hotel / Accommodation Proof <span class="required">*</span></label>
+                <input type="file" id="hotelProof" name="hotelProof" accept=".pdf,.jpg,.png" />
+              </div>
+            </div>
+
+            <div class="form-row doc-group" id="group-ticket" style="display: none">
+              <div class="form-group full-width">
+                <label for="returnTicket">Return / Onward Ticket <span class="required">*</span></label>
+                <input type="file" id="returnTicket" name="returnTicket" accept=".pdf,.jpg,.png" />
+              </div>
+            </div>
+
+            <div class="form-row doc-group" id="group-visa" style="display: none">
+              <div class="form-group full-width">
+                <label for="visa">Visa (if applicable) <span class="required">*</span></label>
+                <input type="file" id="visa" name="visa" accept=".pdf,.jpg,.png" />
+              </div>
+            </div>
+
+            <div class="form-row doc-group" id="group-residence" style="display: none">
+              <div class="form-group full-width">
+                <label for="proofResidence"
+                  >Proof of Residence (Barangay Cert/Utility Bill) <span class="required">*</span></label
+                >
+                <input type="file" id="proofResidence" name="proofResidence" accept=".pdf,.jpg,.png" />
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <div class="form-row">
+              <div class="form-group checkbox-group">
+                <input type="checkbox" id="termsAgreement" name="termsAgreement" required />
+                <label for="termsAgreement">
+                  I certify that all information provided is true and correct. I agree to the
+                  <a
+                    href="https://pinoytourism.com/terms-and-conditions/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >terms and conditions</a
+                  >
+                  and
+                  <a href="https://www.tpb.gov.ph/privacy-policy/" target="_blank" rel="noopener noreferrer"
+                    >privacy policy</a
+                  >
+                  of the Tourist Registration System.
+                  <span class="required">*</span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div id="summary-section" class="form-section summary-section" style="display: none">
+            <h2>Registration Summary</h2>
+            <p>Please review your information before submitting:</p>
+            <div class="summary-content">
+              <div class="summary-group">
+                <h3>Registration Type</h3>
+                <div class="summary-row">
+                  <span class="summary-label">Type:</span>
+                  <span id="summary-registration-type" class="summary-value"></span>
+                </div>
+              </div>
+
+              <div class="summary-group">
+                <h3>Personal Information</h3>
+                <div class="summary-row">
+                  <span class="summary-label">Name:</span>
+                  <span id="summary-name" class="summary-value"></span>
+                </div>
+                <div class="summary-row">
+                  <span class="summary-label">Date of Birth:</span>
+                  <span id="summary-dob" class="summary-value"></span>
+                </div>
+                <div class="summary-row">
+                  <span class="summary-label">Place of Birth:</span>
+                  <span id="summary-place-of-birth" class="summary-value"></span>
+                </div>
+                <div class="summary-row">
+                  <span class="summary-label">Gender:</span>
+                  <span id="summary-gender" class="summary-value"></span>
+                </div>
+                <div class="summary-row">
+                  <span class="summary-label">Religion:</span>
+                  <span id="summary-religion" class="summary-value"></span>
+                </div>
+                <div class="summary-row">
+                  <span class="summary-label">Indigenous Group:</span>
+                  <span id="summary-indigenous" class="summary-value"></span>
+                </div>
+                <div class="summary-row" id="summary-indigenous-group-row" style="display: none">
+                  <span class="summary-label">Group Name:</span>
+                  <span id="summary-indigenous-group-name" class="summary-value"></span>
+                </div>
+                <div class="summary-row">
+                  <span class="summary-label">Passport Status:</span>
+                  <span id="summary-lrn" class="summary-value"></span>
+                </div>
+                <div class="summary-row" id="summary-passport-number-row" style="display: none">
+                  <span class="summary-label">Passport Number:</span>
+                  <span id="summary-passport-number" class="summary-value"></span>
+                </div>
+              </div>
+
+              <div class="summary-group">
+                <h3>Current Address</h3>
+                <div class="summary-row">
+                  <span class="summary-label">Address:</span>
+                  <span id="summary-address" class="summary-value"></span>
+                </div>
+              </div>
+
+              <div class="summary-group">
+                <h3>Emergency Contact Information</h3>
+                <div class="summary-row">
+                  <span class="summary-label">Name:</span>
+                  <span id="summary-emergency-name" class="summary-value"></span>
+                </div>
+                <div class="summary-row">
+                  <span class="summary-label">Relationship:</span>
+                  <span id="summary-emergency-relationship" class="summary-value"></span>
+                </div>
+                <div class="summary-row">
+                  <span class="summary-label">Contact Number:</span>
+                  <span id="summary-emergency-contact" class="summary-value"></span>
+                </div>
+                <div class="summary-row">
+                  <span class="summary-label">Email:</span>
+                  <span id="summary-emergency-email" class="summary-value"></span>
+                </div>
+              </div>
+
+              <div class="summary-group">
+                <h3>Travel Information</h3>
+                <div class="summary-row">
+                  <span class="summary-label">Purpose:</span>
+                  <span id="summary-purpose" class="summary-value"></span>
+                </div>
+                <div class="summary-row" id="summary-track-row" style="display: none">
+                  <span class="summary-label">Travel Type:</span>
+                  <span id="summary-track" class="summary-value"></span>
+                </div>
+              </div>
+
+              <div class="summary-group">
+                <h3>Documents Uploaded</h3>
+                <ul id="summary-documents" class="summary-value"></ul>
+              </div>
+            </div>
+
+            <div class="form-row action-footer" style="margin-top: 20px">
+              <div class="form-group">
+                <button type="button" id="edit-button" class="secondary-button">Edit Information</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="action-footer">
+            <a href="../index.html" class="secondary-button">Cancel</a>
+            <button type="button" class="primary-button" id="review-button">Review Application</button>
+            <button type="submit" class="primary-button" id="submit-button" style="display: none">
+              Submit Application
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <footer>
+      &copy; <span id="currentYear">2024</span> Tourist Registration System | All Rights Reserved
+    </footer>
+
+    <script src="../js/tourist-form.js"></script>
+    <script>
+      document.getElementById("currentYear").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>

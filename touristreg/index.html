@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tourist Registration System</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="landing-page">
+    <header class="glass-header">
+      <div class="header-content">
+        <div class="logo-area">
+          <div class="user-avatar">
+            <img src="logo/tourismlogo.png" alt="Logo" width="65" />
+          </div>
+          <span class="logo-text">Tourist Registration System</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="hero-container">
+      <div class="hero-content">
+        <span class="welcome-badge">Welcome to the Philippines</span>
+        <h1>Your Journey Starts Here</h1>
+        <p>
+          Experience a hassle-free entry. Register your visit or check your application status instantly using
+          our secure digital portal.
+        </p>
+
+        <div class="button-container">
+          <a href="tourist/tracking.html" class="glass-card status-card">
+            <div class="card-icon">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+            <div class="card-text">
+              <h3>Track Status</h3>
+              <span>Check your application</span>
+            </div>
+            <div class="card-arrow">
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          </a>
+
+          <a href="tourist/tourist_reg.html" class="glass-card register-card">
+            <div class="card-icon">
+              <i class="fa-solid fa-passport"></i>
+            </div>
+            <div class="card-text">
+              <h3>Register Now</h3>
+              <span>Create new application</span>
+            </div>
+            <div class="card-arrow">
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <footer>&copy; <span id="year"></span> Tourist Registration System | All Rights Reserved</footer>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>

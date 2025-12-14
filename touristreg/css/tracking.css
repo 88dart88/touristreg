@@ -1,0 +1,376 @@
+/* css/tracking.css - Modern Status Tracking Theme */
+
+/* 1. VARIABLES & RESET */
+:root {
+  /* Brand Palette */
+  --primary: #2e8a45;
+  --primary-dark: #1e5631;
+  --primary-light: #e8f5e9;
+  --accent: #ffc107;
+
+  /* Status Colors */
+  --status-pending-bg: #fff7ed;
+  --status-pending-text: #9a3412;
+  --status-pending-border: #ffedd5;
+  --status-approved-bg: #f0fdf4;
+  --status-approved-text: #15803d;
+  --status-approved-border: #bbf7d0;
+  --status-rejected-bg: #fef2f2;
+  --status-rejected-text: #b91c1c;
+  --status-rejected-border: #fecaca;
+
+  /* UI Colors */
+  --text-main: #1f2937;
+  --text-muted: #6b7280;
+  --bg-input: #f9fafb;
+
+  /* Glassmorphism settings */
+  --glass-bg: rgba(255, 255, 255, 0.95);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.6);
+  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+  /* Font */
+  --font-main: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&display=swap"); /* For Ref Number */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-main);
+  /* Consistent background with other pages */
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url("../logo/bgtour.jpeg") no-repeat center center fixed;
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+  color: var(--text-main);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 2. HEADER (Neutral Dark Glass) */
+header {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 15px 0;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: 700;
+  color: white;
+  letter-spacing: -0.5px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.user-avatar img {
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  transition: transform 0.2s;
+}
+
+.user-avatar img:hover {
+  transform: scale(1.05);
+  border-color: white;
+}
+
+/* 3. MAIN CONTAINER & WELCOME PANEL */
+.container {
+  flex: 1; /* Pushes footer down */
+  width: 100%;
+  max-width: 700px; /* Narrower container for tracking focus */
+  margin: 40px auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: flex-start; /* Aligns panel to top */
+}
+
+.welcome-panel {
+  width: 100%;
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 24px;
+  padding: 50px;
+  box-shadow: var(--shadow-lg);
+  border: var(--glass-border);
+  text-align: center;
+}
+
+h1 {
+  color: var(--primary-dark);
+  font-size: 28px;
+  font-weight: 800;
+  margin-top: 0;
+  letter-spacing: -0.5px;
+}
+
+h1 + p {
+  color: var(--text-muted);
+  margin-bottom: 40px;
+  font-size: 1.05rem;
+}
+
+/* 4. TRACKING FORM */
+.status-check-form {
+  max-width: 100%;
+  margin-bottom: 30px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #374151;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Special styling for Reference Input */
+input[type="text"] {
+  width: 100%;
+  padding: 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  background-color: white;
+  font-size: 18px;
+  font-family: "JetBrains Mono", monospace; /* Monospace for codes */
+  text-align: center;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  color: var(--primary-dark);
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(46, 138, 69, 0.15);
+}
+
+input[type="text"]::placeholder {
+  font-family: var(--font-main);
+  letter-spacing: normal;
+  text-transform: none;
+  font-size: 15px;
+  color: #9ca3af;
+}
+
+.primary-button {
+  width: 100%;
+  padding: 16px;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(135deg, var(--primary), #166534);
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(46, 138, 69, 0.2);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.primary-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px rgba(46, 138, 69, 0.3);
+}
+
+/* 5. RESULT CARD */
+.status-result-container {
+  margin-top: 30px;
+  background: white;
+  border-radius: 16px;
+  border: 1px solid #f3f4f6;
+  overflow: hidden;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+  animation: slideDown 0.4s ease-out;
+  text-align: left;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.status-result-container p {
+  padding: 15px 25px;
+  margin: 0;
+  border-bottom: 1px solid #f3f4f6;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 15px;
+}
+
+.status-result-container p:last-child {
+  border-bottom: none;
+}
+
+.status-result-container strong {
+  color: var(--text-muted);
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.status-result-container span {
+  font-weight: 600;
+  color: var(--text-main);
+  text-align: right;
+}
+
+/* 6. STATUS BADGES */
+.status-text {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 6px 12px;
+  border-radius: 50px;
+}
+
+.status-pending {
+  background-color: var(--status-pending-bg);
+  color: var(--status-pending-text);
+  border: 1px solid var(--status-pending-border);
+}
+.status-approved {
+  background-color: var(--status-approved-bg);
+  color: var(--status-approved-text);
+  border: 1px solid var(--status-approved-border);
+}
+.status-rejected {
+  background-color: var(--status-rejected-bg);
+  color: var(--status-rejected-text);
+  border: 1px solid var(--status-rejected-border);
+}
+
+/* Rejection Reason Box */
+#rejectionReasonContainer {
+  padding: 20px 25px;
+  background-color: #fff1f2;
+  border-top: 1px solid #fecaca;
+}
+
+#rejectionReasonContainer p {
+  padding: 0;
+  border: none;
+  display: block;
+}
+
+.rejection-reason {
+  margin-top: 5px;
+  font-size: 14px;
+  color: #991b1b;
+  line-height: 1.5;
+}
+
+/* 7. LOADING & ERROR STATES */
+.loading-indicator {
+  margin-top: 20px;
+  color: var(--text-muted);
+  font-style: italic;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.error-message-container {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  color: #991b1b;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* 8. FOOTER & ACTIONS */
+.action-footer {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.secondary-button {
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px solid #d1d5db;
+  padding: 10px 24px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.secondary-button:hover {
+  background: white;
+  color: var(--text-main);
+  border-color: var(--text-muted);
+}
+
+/* Page Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 13px;
+  margin-top: auto; /* Pushes footer to bottom */
+}
+
+/* Utilities */
+.hidden {
+  display: none !important;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .welcome-panel {
+    padding: 30px 20px;
+  }
+  .status-result-container p {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+  .status-result-container span {
+    text-align: left;
+  }
+}

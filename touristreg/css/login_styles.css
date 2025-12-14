@@ -1,0 +1,200 @@
+/* css/login_styles.css */
+
+/* Base styles for the login page */
+body.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Full viewport height */
+  /* The background image is set here */
+  background-image: url("https://assets.onecompiler.app/43dx6dc9k/43ethwgn2/unnamed.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  font-family: "Roboto", Arial, sans-serif; /* Consistent font */
+  margin: 0;
+  padding: 20px; /* Add some padding for smaller screens */
+  box-sizing: border-box;
+}
+
+* {
+  /* Ensure box-sizing is applied universally if not already */
+  box-sizing: border-box;
+}
+
+.login-container {
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.9
+  ); /* Slightly transparent white background for the container itself */
+  padding: 35px 45px; /* Generous padding */
+  border-radius: 10px; /* Softer rounded corners */
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15); /* Softer, more pronounced shadow */
+  width: 100%;
+  max-width: 420px; /* Optimal width for login forms */
+  text-align: center;
+  backdrop-filter: blur(5px); /* Optional: adds a blur effect to the area behind the container */
+  -webkit-backdrop-filter: blur(5px); /* Safari */
+}
+
+/* Optional: For a logo above the title */
+.login-container .logo-container {
+  margin-bottom: 20px;
+}
+
+.login-container .logo-container img {
+  max-width: 100px; /* Adjust as needed */
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.login-container h1 {
+  color: #2c3e50;
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 1.9rem;
+  font-weight: 700;
+}
+
+.login-container p.subtitle {
+  color: #455a64; /* Slightly darker for better contrast on potentially transparent bg */
+  margin-bottom: 30px;
+  font-size: 1rem;
+}
+
+.login-form .form-group {
+  margin-bottom: 22px;
+  text-align: left;
+}
+
+.login-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #37474f; /* Darker label for better contrast */
+  font-size: 0.9rem;
+}
+
+/* === TRANSPARENT INPUT BOX STYLES === */
+.login-form input[type="text"],
+.login-form input[type="password"] {
+  width: 100%;
+  padding: 12px 16px;
+  height: 48px;
+  border: 1px solid rgba(0, 0, 0, 0.2); /* Darker, slightly transparent border for definition */
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #263238; /* Darker text color for readability against background image */
+  background-color: transparent; /* <<< MADE TRANSPARENT HERE */
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.login-form input[type="text"]::placeholder,
+.login-form input[type="password"]::placeholder {
+  color: rgba(0, 0, 0, 0.4); /* Placeholder text color for transparent background */
+}
+
+.login-form input[type="text"]:focus,
+.login-form input[type="password"]:focus {
+  border-color: #007bff; /* Primary blue for focus, ensure it's visible */
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+  background-color: rgba(255, 255, 255, 0.1); /* Very slightly opaque white on focus, or keep transparent */
+  /* If you want fully transparent on focus too: background-color: transparent; */
+  color: #12212f; /* Ensure focused text is very readable */
+}
+/* === END TRANSPARENT INPUT BOX STYLES === */
+
+/* General button styles */
+.button {
+  padding: 10px 18px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  line-height: 1.5;
+}
+.button:active {
+  transform: translateY(1px);
+}
+
+.button-primary {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+.button-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.login-form .button.button-primary {
+  width: 100%;
+  padding: 12px;
+  font-size: 1.05rem;
+  margin-top: 10px;
+  height: 48px;
+}
+
+/* Error message styling */
+.login-error-message {
+  background-color: rgba(248, 215, 218, 0.9); /* Slightly transparent error background */
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+  padding: 12px 15px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+/* Additional links (Forgot Password) */
+.additional-links {
+  margin-top: 25px;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.additional-links a {
+  color: #0056b3; /* Darker blue for better contrast on potentially busy background */
+  text-decoration: none;
+  margin: 0 8px;
+  font-weight: 500; /* Make links slightly bolder */
+}
+
+.additional-links a:hover {
+  text-decoration: underline;
+  color: #003d80;
+}
+
+/* Utility class for hiding elements */
+.hidden {
+  display: none !important;
+}
+
+/* Styles for message area in forgot/reset password pages */
+.message-area {
+  padding: 12px 15px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+  text-align: left;
+}
+.message-area.success-message {
+  background-color: rgba(212, 237, 218, 0.9); /* Slightly transparent success background */
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
