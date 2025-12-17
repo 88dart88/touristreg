@@ -1,0 +1,65 @@
+-- 1. Create Database
+CREATE DATABASE IF NOT EXISTS tourist_db;
+USE tourist_db;
+
+-- 2. Create Registrations Table (The Master List)
+CREATE TABLE IF NOT EXISTS registrations (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    reference_number VARCHAR(50) NOT NULL UNIQUE,
+    registration_type VARCHAR(50),
+    
+    -- Personal Info
+    last_name VARCHAR(100),
+    first_name VARCHAR(100),
+    middle_name VARCHAR(100),
+    extension_name VARCHAR(10),
+    dob DATE,
+    place_of_birth VARCHAR(100),
+    gender VARCHAR(20),
+    religion VARCHAR(50),
+    nationality VARCHAR(50),
+    
+    -- Indigenous Info
+    is_indigenous VARCHAR(10) DEFAULT 'no',
+    indigenous_group VARCHAR(50),
+    
+    -- Passport Info
+    passport_status VARCHAR(20),
+    passport_number VARCHAR(50),
+    
+    -- Address
+    street_address VARCHAR(255),
+    barangay VARCHAR(100),
+    city VARCHAR(100),
+    province VARCHAR(100),
+    zipcode VARCHAR(10),
+    
+    -- Emergency Contact
+    emergency_last_name VARCHAR(100),
+    emergency_first_name VARCHAR(100),
+    emergency_middle_name VARCHAR(100),
+    emergency_relationship VARCHAR(50),
+    emergency_contact VARCHAR(20),
+    emergency_email VARCHAR(100),
+    
+    -- Travel Details
+    purpose VARCHAR(50),
+    travel_package VARCHAR(50),
+    
+    -- System Status
+    status VARCHAR(20) DEFAULT 'pending', -- pending, approved, rejected
+    rejection_reason TEXT,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 3. Create Documents Table (For File Uploads)
+CREATE TABLE IF NOT EXISTS documents (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    reference_number VARCHAR(50) NOT NULL,
+    document_type VARCHAR(100), -- e.g., 'Passport Scan', 'Valid ID'
+    file_path VARCHAR(255),     -- The filename saved in the uploads folder
+    uploaded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    
+    -- Link to the registrations table (Foreign Key)
+    FOREIGN KEY (reference_number) REFERENCES registrations(reference_number) ON DELETE CASCADE
+);
